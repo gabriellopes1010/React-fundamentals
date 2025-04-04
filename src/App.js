@@ -3,6 +3,24 @@ import Post from './Post';
 import Header from "./Header";
 //Render -> Renderizars
 
+const posts = [
+  {
+    title: "titulo da notícia 01",
+    subtitle: "subtitulo da notícia 01",
+    likes: 10,
+  },
+  {
+    title: "titulo da notícia 02",
+    subtitle: "subtitulo da notícia 02",
+    likes: 25,
+  },
+  {
+    title: "titulo da notícia 03",
+    subtitle: "subtitulo da notícia 03",
+    likes: 44,
+  },
+];
+
 function App() {
   return (
     <>
@@ -10,34 +28,16 @@ function App() {
 
       <hr />
 
-      <Post
-        likes={10}
-        post={{
-          title: "titulo da notícia 01",
-          subtitle: "subtitulo da notícia 01",
-        }}
-      />
-      <Post
-        likes={22} // Changed from "22" (string) to 22 (number)
-        post={{
-          title: "titulo da notícia 02",
-          subtitle: "subtitulo da notícia 02",
-        }}
-      />
-      <Post
-        likes={5}
-        post={{
-          title: "titulo da notícia 03",
-          subtitle: "subtitulo da notícia 03",
-        }}
-      />
-      <Post
-        likes={15}
-        post={{
-          title: "titulo da notícia 04",
-          subtitle: "subtitulo da notícia 04",
-        }}
-      />
+      {posts.map((post) => (
+        <Post
+          key={post.title}
+          likes={post.likes}
+          post={{
+            title: post.title,
+            subtitle: post.subtitle,
+          }}
+        />
+      ))}
     </>
   );
 }
