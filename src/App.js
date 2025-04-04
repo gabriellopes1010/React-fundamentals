@@ -1,32 +1,45 @@
 import React from 'react';
 import Post from './Post';
+import Header from "./Header";
 //Render -> Renderizars
 
-function App(){
+function App() {
   return (
     <>
-      <h1>JStack's Blog</h1>
-      <h1>Posts da semana</h1>
+      <Header title="JStack's Blog" subtitle="Posts da semana" />
+
       <hr />
 
       <Post
-        title="Titulo da notícia 01" 
-        subtitle ="subtitulo da notícia 01"
+        likes={10}
+        post={{
+          title: "titulo da notícia 01",
+          subtitle: "subtitulo da notícia 01",
+        }}
       />
       <Post
-        title="Titulo da notícia 02" 
-        subtitle ="subtitulo da notícia 02"
+        likes={22} // Changed from "22" (string) to 22 (number)
+        post={{
+          title: "titulo da notícia 02",
+          subtitle: "subtitulo da notícia 02",
+        }}
       />
       <Post
-        title="Titulo da notícia 03" 
-        subtitle ="subtitulo da notícia 03"
+        likes={5}
+        post={{
+          title: "titulo da notícia 03",
+          subtitle: "subtitulo da notícia 03",
+        }}
       />
       <Post
-        title="Titulo da notícia 04" 
-        subtitle ="subtitulo da notícia 04"
+        likes={15}
+        post={{
+          title: "titulo da notícia 04",
+          subtitle: "subtitulo da notícia 04",
+        }}
       />
     </>
-  )
+  );
 }
 
 export default App;
