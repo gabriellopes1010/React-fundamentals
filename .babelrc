@@ -1,0 +1,4 @@
+// filepath: /home/gabriel/Documentos/Curso/JSTACK/React_fundamentos/.babelrc
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
