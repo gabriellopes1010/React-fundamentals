@@ -1,36 +1,60 @@
-import React from 'react';
-import Post from './Post';
+import React, { useState } from "react";
+import Post from "./Post";
 import Header from "./Header";
 //Render -> Renderizars
 
-const posts = [
-  {
-    title: "titulo da notícia 01",
-    subtitle: "subtitulo da notícia 01",
-    likes: 10,
-  },
-  {
-    title: "titulo da notícia 02",
-    subtitle: "subtitulo da notícia 02",
-    likes: 25,
-  },
-  {
-    title: "titulo da notícia 03",
-    subtitle: "subtitulo da notícia 03",
-    likes: 44,
-  },
-];
-
 function App() {
+  const [posts, setPosts] = useState([
+    {
+      id: Math.random(),
+      title: "titulo da notícia 01",
+      subtitle: "subtitulo da notícia 01",
+      likes: 10,
+    },
+    {
+      id: Math.random(),
+      title: "titulo da notícia 02",
+      subtitle: "subtitulo da notícia 02",
+      likes: 25,
+    },
+    {
+      id: Math.random(),
+      title: "titulo da notícia 03",
+      subtitle: "subtitulo da notícia 03",
+      likes: 44,
+    },
+  ]);
+
+  console.log({ posts });
+
+  function handleRefresh() {
+    setTimeout(() => {
+      setPosts((prevState) => [
+        ...prevState,
+        {
+          id: Math.random(),
+          title: `titulo da notícia 0${prevState.length + 1}`,
+          subtitle: `subtitulo da notícia 0${prevState.length + 1}`,
+          likes: 44,
+        },
+      ]);
+    }, 2000);
+  }
+
   return (
     <>
-      <Header title="JStack's Blog" subtitle="Posts da semana" />
+      <Header>
+        <h2>
+          Posts da semana
+          <button onClick={handleRefresh}>Atualizar</button>
+        </h2>
+      </Header>
 
       <hr />
 
       {posts.map((post) => (
         <Post
-          key={post.title}
+          key={post.id}
           likes={post.likes}
           post={{
             title: post.title,
