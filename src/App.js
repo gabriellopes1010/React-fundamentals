@@ -10,18 +10,21 @@ function App() {
       title: "titulo da notícia 01",
       subtitle: "subtitulo da notícia 01",
       likes: 10,
+      read: true,
     },
     {
       id: Math.random(),
       title: "titulo da notícia 02",
       subtitle: "subtitulo da notícia 02",
       likes: 25,
+      read: false,
     },
     {
       id: Math.random(),
       title: "titulo da notícia 03",
       subtitle: "subtitulo da notícia 03",
       likes: 44,
+      read: false,
     },
   ]);
 
@@ -38,7 +41,11 @@ function App() {
           likes: 44,
         },
       ]);
-    }, 2000);
+    }, 50);
+  }
+
+  function handleRemovePost(postId) {
+    setPosts((prevState) => prevState.filter((post) => post.id !== postId));
   }
 
   return (
@@ -55,11 +62,9 @@ function App() {
       {posts.map((post) => (
         <Post
           key={post.id}
+          onRemove={handleRemovePost}
           likes={post.likes}
-          post={{
-            title: post.title,
-            subtitle: post.subtitle,
-          }}
+          post={post}
         />
       ))}
     </>
