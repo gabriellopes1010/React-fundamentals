@@ -1,30 +1,37 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src', 'index.js'),
-  // src/index.js -> não é uma boa pois o file de um sistema pode ser diferente
+  entry: path.resolve(__dirname, "src", "index.js"), // Updated entry path to src/index.js
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'bundle[hash].js',
+    path: path.resolve(__dirname, "build"),
+    filename: "bundle.js",
   },
+  mode: "development",
+  // Ensure development mode is set
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public', 'index.html'),
+      template: path.resolve(__dirname, "public", "index.html"), // Updated template path to src/index.html
     }),
     new CleanWebpackPlugin(),
   ],
-  module:{
+  module: {
     rules: [
       {
-        test:/\.js$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
-      }
-    ]
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"],
+          },
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
-  devServer: {
-    port:8080
-  }
-}
+};
