@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Post from "./Post";
 import Header from "./Header";
+import ThemeProvider from "./ThemeContext";
 //Render -> Renderizars
 
 function App() {
@@ -28,8 +29,6 @@ function App() {
     },
   ]);
 
-  console.log({ posts });
-
   function handleRefresh() {
     setTimeout(() => {
       setPosts((prevState) => [
@@ -49,7 +48,7 @@ function App() {
   }
 
   return (
-    <>
+    <ThemeProvider>
       <Header>
         <h2>
           Posts da semana
@@ -67,7 +66,7 @@ function App() {
           post={post}
         />
       ))}
-    </>
+    </ThemeProvider>
   );
 }
 
