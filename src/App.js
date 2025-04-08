@@ -1,13 +1,10 @@
-import React, { useState, createContext } from "react";
+import React, { useState } from "react";
 import Post from "./Post";
 import Header from "./Header";
+import ThemeProvider from "./ThemeContext";
 //Render -> Renderizars
 
-export const ThemeContext = createContext("dark");
-
 function App() {
-  const [theme, setTheme] = useState("dark");
-
   const [posts, setPosts] = useState([
     {
       id: Math.random(),
@@ -32,12 +29,6 @@ function App() {
     },
   ]);
 
-  function handleToggleTheme() {
-    setTheme((prevState) => (prevState === "dark" ? "light" : "dark"));
-  }
-
-  console.log({ posts });
-
   function handleRefresh() {
     setTimeout(() => {
       setPosts((prevState) => [
@@ -57,8 +48,8 @@ function App() {
   }
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <Header onToggleTheme={handleToggleTheme}>
+    <ThemeProvider>
+      <Header>
         <h2>
           Posts da semana
           <button onClick={handleRefresh}>Atualizar</button>
@@ -75,7 +66,7 @@ function App() {
           post={post}
         />
       ))}
-    </ThemeContext.Provider>
+    </ThemeProvider>
   );
 }
 
