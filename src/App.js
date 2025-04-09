@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Post from "./Post";
 import Header from "./Header";
+import { title } from "./App.css";
+
 import ThemeProvider from "./ThemeContext";
 //Render -> Renderizars
 
@@ -12,6 +14,7 @@ function App() {
       subtitle: "subtitulo da notícia 01",
       likes: 10,
       read: true,
+      removed: false,
     },
     {
       id: Math.random(),
@@ -19,6 +22,7 @@ function App() {
       subtitle: "subtitulo da notícia 02",
       likes: 25,
       read: false,
+      removed: true,
     },
     {
       id: Math.random(),
@@ -26,6 +30,7 @@ function App() {
       subtitle: "subtitulo da notícia 03",
       likes: 44,
       read: false,
+      removed: false,
     },
   ]);
 
@@ -44,13 +49,17 @@ function App() {
   }
 
   function handleRemovePost(postId) {
-    setPosts((prevState) => prevState.filter((post) => post.id !== postId));
+    setPosts((prevState) =>
+      prevState.map((post) =>
+        post.id === postId ? { ...post, removed: true } : post
+      )
+    );
   }
 
   return (
     <ThemeProvider>
       <Header>
-        <h2>
+        <h2 className={title}>
           Posts da semana
           <button onClick={handleRefresh}>Atualizar</button>
         </h2>
