@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Post from "./Post";
-import Header from "./Header";
+import Post from "../Post";
+import Header from "../Header";
 import { title } from "./App.css";
 
-import ThemeProvider from "./ThemeContext";
+import ThemeProvider from "../../context/ThemeContext";
 //Render -> Renderizars
 
 function App() {
