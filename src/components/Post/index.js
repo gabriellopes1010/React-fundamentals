@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import PostHeader from "./postHeader";
+import { Subtitle, Rate } from "./styles";
 
 import { post, postDeleted } from "./Post.css";
 
@@ -15,9 +16,8 @@ export default function Post(props) {
           read: props.post.read,
         }}
       />
-      <small>{props.post.subtitle}</small>
-      <br />
-      Media: {props.post.likes / 2}
+      <Subtitle>{props.post.subtitle}</Subtitle>
+      <Rate>Media: {props.post.likes / 2}</Rate>
     </article>
   );
 }
