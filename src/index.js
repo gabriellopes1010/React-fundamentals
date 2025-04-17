@@ -1,15 +1,11 @@
 import React from "react";
-import { createRoot } from "react-dom/client"; // Atualizado para usar createRoot
-import App from "./components/App/"; // Importa o componente App
+import ReactDOM from "react-dom/client"; // Atualize a importação para 'react-dom/client'
 
-import GlobalStyle from "./styles/global";
+import App from "./App";
 
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement); // Cria a raiz do React
-
+const root = ReactDOM.createRoot(document.getElementById("root")); // Use createRoot
 root.render(
-  <>
-    <GlobalStyle />
+  <React.StrictMode>
     <App />
-  </>
+  </React.StrictMode>
 );
