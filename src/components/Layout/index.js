@@ -5,7 +5,6 @@ import PostsList from "../PostsList";
 import Footer from "../Footer";
 
 export default function Layout({ onToggleTheme, selectedTheme }) {
-  const theme = useTheme();
   return (
     <>
       <Header onToggleTheme={onToggleTheme} selectedTheme={selectedTheme} />
